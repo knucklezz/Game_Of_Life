@@ -15,7 +15,6 @@ namespace Game_Of_Life
         public Form1()
         {
             InitializeComponent();
-            //Test
         }
     }
 }
