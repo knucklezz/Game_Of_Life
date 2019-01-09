@@ -12,16 +12,15 @@ namespace Game_Of_Life
 {
     public partial class Form1 : Form
     {
-        Form LoadSaveForm = new Form();
 
         public Form1()
         {
             InitializeComponent();
-            //Test
         }
 
         private void LoadSaveButton_Click(object sender, EventArgs e)
-        {   
+        {
+            Form LoadSaveForm = new Form();
             LoadSaveForm.Show();
         }
     }

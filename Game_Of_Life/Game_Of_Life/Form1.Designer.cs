@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             this.BackPanel = new System.Windows.Forms.Panel();
-            this.StartButton = new System.Windows.Forms.Button();
-            this.StopButton = new System.Windows.Forms.Button();
-            this.NextButton = new System.Windows.Forms.Button();
+            this.GridPanel = new System.Windows.Forms.Panel();
             this.LoadSaveButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NextButton = new System.Windows.Forms.Button();
+            this.StopButton = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
             this.BackPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // BackPanel
             // 
             this.BackPanel.AutoSize = true;
             this.BackPanel.BackColor = System.Drawing.Color.Transparent;
-            this.BackPanel.Controls.Add(this.dataGridView1);
+            this.BackPanel.Controls.Add(this.GridPanel);
             this.BackPanel.Controls.Add(this.LoadSaveButton);
             this.BackPanel.Controls.Add(this.NextButton);
             this.BackPanel.Controls.Add(this.StopButton);
@@ -50,47 +49,16 @@
             this.BackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackPanel.Location = new System.Drawing.Point(0, 0);
             this.BackPanel.Name = "BackPanel";
-            this.BackPanel.Size = new System.Drawing.Size(1262, 721);
+            this.BackPanel.Size = new System.Drawing.Size(944, 721);
             this.BackPanel.TabIndex = 0;
             // 
-            // StartButton
+            // GridPanel
             // 
-            this.StartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.StartButton.ForeColor = System.Drawing.Color.White;
-            this.StartButton.Location = new System.Drawing.Point(3, 3);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(136, 53);
-            this.StartButton.TabIndex = 0;
-            this.StartButton.Text = "Start";
-            this.StartButton.UseVisualStyleBackColor = false;
-            // 
-            // StopButton
-            // 
-            this.StopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StopButton.ForeColor = System.Drawing.Color.White;
-            this.StopButton.Location = new System.Drawing.Point(3, 52);
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(136, 53);
-            this.StopButton.TabIndex = 1;
-            this.StopButton.Text = "Stop";
-            this.StopButton.UseVisualStyleBackColor = false;
-            // 
-            // NextButton
-            // 
-            this.NextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.NextButton.ForeColor = System.Drawing.Color.White;
-            this.NextButton.Location = new System.Drawing.Point(3, 101);
-            this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(136, 53);
-            this.NextButton.TabIndex = 2;
-            this.NextButton.Text = "Next";
-            this.NextButton.UseVisualStyleBackColor = false;
+            this.GridPanel.BackColor = System.Drawing.Color.DimGray;
+            this.GridPanel.Location = new System.Drawing.Point(141, 3);
+            this.GridPanel.Name = "GridPanel";
+            this.GridPanel.Size = new System.Drawing.Size(800, 800);
+            this.GridPanel.TabIndex = 4;
             // 
             // LoadSaveButton
             // 
@@ -106,14 +74,44 @@
             this.LoadSaveButton.UseVisualStyleBackColor = false;
             this.LoadSaveButton.Click += new System.EventHandler(this.LoadSaveButton_Click);
             // 
-            // dataGridView1
+            // NextButton
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(142, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1117, 715);
-            this.dataGridView1.TabIndex = 5;
+            this.NextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.NextButton.ForeColor = System.Drawing.Color.White;
+            this.NextButton.Location = new System.Drawing.Point(3, 101);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(136, 53);
+            this.NextButton.TabIndex = 2;
+            this.NextButton.Text = "Next";
+            this.NextButton.UseVisualStyleBackColor = false;
+            // 
+            // StopButton
+            // 
+            this.StopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StopButton.ForeColor = System.Drawing.Color.White;
+            this.StopButton.Location = new System.Drawing.Point(3, 52);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(136, 53);
+            this.StopButton.TabIndex = 1;
+            this.StopButton.Text = "Stop";
+            this.StopButton.UseVisualStyleBackColor = false;
+            // 
+            // StartButton
+            // 
+            this.StartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.StartButton.ForeColor = System.Drawing.Color.White;
+            this.StartButton.Location = new System.Drawing.Point(3, 3);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(136, 53);
+            this.StartButton.TabIndex = 0;
+            this.StartButton.Text = "Start";
+            this.StartButton.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -121,13 +119,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(1262, 721);
+            this.ClientSize = new System.Drawing.Size(944, 721);
             this.Controls.Add(this.BackPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.BackPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +137,7 @@
         private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel GridPanel;
     }
 }
 
