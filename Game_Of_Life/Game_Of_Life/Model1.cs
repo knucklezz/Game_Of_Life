@@ -13,7 +13,7 @@ namespace Game_Of_Life
         // If you wish to target a different database and/or database provider, modify the 'Model1' 
         // connection string in the application configuration file.
         public Model1()
-            : base("name=Model1")
+            : base("name=Model11")
         {
         }
 
