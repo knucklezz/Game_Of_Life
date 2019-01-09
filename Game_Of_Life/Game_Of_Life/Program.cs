@@ -11,6 +11,7 @@ namespace Game_Of_Life
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// hej
         [STAThread]
         static void Main()
         {
