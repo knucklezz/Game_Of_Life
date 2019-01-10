@@ -98,6 +98,7 @@ namespace Game_Of_Life
             // Return list?
         }
 
+
         // Return names of all saved games
         public List<GameName> GetGameNames()
         {
@@ -105,6 +106,7 @@ namespace Game_Of_Life
 
             return names;
         }
+
 
         // Save the game + generations with the specified name
         public void SaveGame(string nameOfSave)
