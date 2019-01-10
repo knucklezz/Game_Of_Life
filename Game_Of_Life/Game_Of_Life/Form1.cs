@@ -12,16 +12,39 @@ namespace Game_Of_Life
 {
     public partial class Form1 : Form
     {
+        Timer timer1 = new Timer();
+        Pen pen1 = new Pen();
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void LoadSaveButton_Click(object sender, EventArgs e)
         {
             Form LoadSaveForm = new Form();
             LoadSaveForm.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Interval = 2000;
+            timer1.Enabled = true;
         }
     }
 }
