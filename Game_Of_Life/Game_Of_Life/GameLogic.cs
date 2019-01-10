@@ -23,6 +23,7 @@ namespace Game_Of_Life
 
             for (int i = 0; i < nrRows; i++)
             {
+                 currentBoard[i] = new bool[nrColumns];
                 for (int j = 0; j < nrColumns; j++)
                 {
                     // Generate a random number to determine whether a cell will be alive or not at the beginning of the game
@@ -57,6 +58,7 @@ namespace Game_Of_Life
             // Check all cells
             for (int i = 0; i < nrRows; i++)
             {
+                newBoard[i] = new bool[nrColumns];
                 for (int j = 0; j < nrColumns; j++)
                 {
                     nrNeighbours = NrOfLivingNeighbours(i, j, currentBoard);
@@ -119,7 +121,7 @@ namespace Game_Of_Life
 
         }
 
-        
+
         // Check the number of living cells neighbouring a cell located on the board coordinates (x,y)
         private int NrOfLivingNeighbours(int x, int y, bool[][] currentBoard)
         {
@@ -129,7 +131,7 @@ namespace Game_Of_Life
             for (int i = x - 1; i <= x + 1; i++)
             {
                 // Make sure index not out of bounds
-                if (i < 0)
+                if (i < 0 || i == currentBoard.GetLength(0))
                 {
                     ;
                 }
@@ -137,8 +139,9 @@ namespace Game_Of_Life
                 {
                     for (int j = y - 1; j <= y + 1; j++)
                     {
+                        System.Diagnostics.Debug.WriteLine("x " + x + " i " + i + " ; y " + y + " j " + j);
                         // Make sure index not out of bounds
-                        if (j < 0)
+                        if (j < 0 || j == currentBoard[i].Length)
                         {
                             ;
                         }
