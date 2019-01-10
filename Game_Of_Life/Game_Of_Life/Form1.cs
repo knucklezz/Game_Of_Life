@@ -12,8 +12,9 @@ namespace Game_Of_Life
 {
     public partial class Form1 : Form
     {
-        //private bool gameRunning = false;
+        private bool gameRunning = false;
         private GameLogic gameLogicInstance= new GameLogic();
+        
         private bool[][] currentBoard;
 
 
@@ -21,12 +22,11 @@ namespace Game_Of_Life
         public Form1()
         {
             InitializeComponent();
-            InitializeTimer();
         }
 
         private void LoadSaveButton_Click(object sender, EventArgs e)
         {
-            Form LoadSaveForm = new Form();
+            Form2 LoadSaveForm = new Form2();
             LoadSaveForm.Show();
         }
 
@@ -37,13 +37,14 @@ namespace Game_Of_Life
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+            InitializeTimer();
             updateGameBoard(currentBoard);
         }
 
         private void randomGameButton_Click(object sender, EventArgs e)
         {
            currentBoard = gameLogicInstance.GetNewGame();
-
+            gameRunning = true;
         }
         private void InitializeTimer()
         {
@@ -60,7 +61,9 @@ namespace Game_Of_Life
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-                
+            timer.Enabled = false;
+            gameRunning = false;
+
         }
 
         private void updateGameBoard(bool[][] currentBoard)
@@ -70,7 +73,15 @@ namespace Game_Of_Life
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-            currentBoard = gameLogicInstance.GetNextGeneration();
+            if (gameRunning == true)
+            {
+                currentBoard = gameLogicInstance.GetNextGeneration();
+                updateGameBoard(currentBoard);
+            }
+            else
+            {
+                MessageBox.Show("You must create a random game first!");
+            }
         }
     }
 }
