@@ -30,10 +30,6 @@ namespace Game_Of_Life
             LoadSaveForm.Show();
         }
 
-        private void GridPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
@@ -70,7 +66,7 @@ namespace Game_Of_Life
         {
 
         }
-
+        
         private void NextButton_Click(object sender, EventArgs e)
         {
             if (gameRunning == true)
@@ -82,6 +78,11 @@ namespace Game_Of_Life
             {
                 MessageBox.Show("You must create a random game first!");
             }
+        }
+
+        private void GridPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
