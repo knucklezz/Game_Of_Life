@@ -9,7 +9,6 @@ namespace Game_Of_Life
 {
     class GameLogic
     {
-        private List<bool[][]> allGenerationsCurrentGame;
         private bool[][] currentBoard;
         private GameName currentGame;
 
@@ -108,7 +107,6 @@ namespace Game_Of_Life
         }
 
         // Save the game + generations with the specified name
-        // ////// Would saving a GameName also save its generations, or will they need to be saved separately?
         public void SaveGame(string nameOfSave)
         {
             // Call crud save method
@@ -154,7 +152,6 @@ namespace Game_Of_Life
                         }
                     }
                 }
-
             }
 
             return nrLivingNeighbours;
