@@ -9,12 +9,16 @@ namespace Game_Of_Life
 {
     class GameLogic
     {
+        private static int nrRows = 7;
+        private static int nrColumns = 7;
+
         private bool[][] currentBoard;
         private GameName currentGame;
 
         // Generate and return a random starting board for a new game
-        public bool[][] GetNewGame(int nrRows, int nrColumns)
+        public bool[][] GetNewGame()
         {
+            
             currentGame = new GameName();
             // ////// Needs at least a couple of cells that will survive and at least one that will be born in the next generation
             currentBoard = new bool[nrRows][];
@@ -49,7 +53,7 @@ namespace Game_Of_Life
 
         // Check how many cells are alive next to each cell, kill and birth new ones accordingly
         // Return the new generation
-        public bool[][] GetNextGeneration(int nrRows, int nrColumns)
+        public bool[][] GetNextGeneration()
         {
             bool[][] newBoard = new bool[nrRows][];
             int nrNeighbours = 0;
