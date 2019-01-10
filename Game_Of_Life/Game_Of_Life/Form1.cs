@@ -13,7 +13,7 @@ namespace Game_Of_Life
     public partial class Form1 : Form
     {
         Timer timer1 = new Timer();
-        Pen pen1 = new Pen();
+        GameLogic gamelogic = new GameLogic();
 
         public Form1()
         {
@@ -23,6 +23,7 @@ namespace Game_Of_Life
         private void StartButton_Click(object sender, EventArgs e)
         {
             timer1.Start();
+            gamelogic.GetNewGame(12, 12);
         }
 
         private void StopButton_Click(object sender, EventArgs e)
