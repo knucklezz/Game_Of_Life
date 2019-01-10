@@ -1,11 +1,13 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Game_Of_Life.Entities
 {
+    [Table("Generation")]
     public class Generation
     {
         public int Id { get; set; }
         public GameName GameId { get; set; }
-        public virtual string BoardData { get; set; }
+        public string BoardData { get; set; }
 
         public bool[][] Board
         {
