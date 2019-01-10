@@ -13,10 +13,8 @@ namespace Game_Of_Life
     public partial class Form1 : Form
     {
         //private bool gameRunning = false;
-        private GameLogic gameLogicInstance= new GameLogic();
+        private GameLogic gameLogicInstance = new GameLogic();
         private bool[][] currentBoard;
-
-
 
         public Form1()
         {
@@ -42,8 +40,15 @@ namespace Game_Of_Life
 
         private void randomGameButton_Click(object sender, EventArgs e)
         {
-           currentBoard = gameLogicInstance.GetNewGame();
+            currentBoard = gameLogicInstance.GetNewGame();
 
+            for (int i = 0; i < currentBoard.GetLength(0); i++)
+            {
+                GridView.DataSource = currentBoard[i];
+
+                
+            }
+        
         }
         private void InitializeTimer()
         {
