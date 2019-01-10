@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace Game_Of_Life
 {
-    public partial class Form1 : Form
+    public partial class LoadSaveForm : Form
     {
-
-        public Form1()
+        public LoadSaveForm()
         {
             InitializeComponent();
-        }
-
-        private void LoadSaveButton_Click(object sender, EventArgs e)
-        {
-            Form LoadSaveForm = new Form();
-            LoadSaveForm.Show();
         }
     }
 }
