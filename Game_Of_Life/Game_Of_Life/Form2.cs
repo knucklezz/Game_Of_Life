@@ -58,7 +58,7 @@ namespace Game_Of_Life
             GameName loadedGame = GetGameFromListBox();
             if(loadedGame == null)
             {
-                ;
+                
             }
             else
             {
