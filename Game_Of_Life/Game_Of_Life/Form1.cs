@@ -64,8 +64,25 @@ namespace Game_Of_Life
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            InitializeTimer();
-            updateGameBoard();
+            
+            if (gameRunning == true)
+            {
+                if (timer.Enabled)
+                {
+                    MessageBox.Show("Timer is enabled");
+                }
+                else
+                {
+                    InitializeTimer();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("create a game");
+            }
+
+
         }
 
         private void randomGameButton_Click(object sender, EventArgs e)
@@ -84,15 +101,21 @@ namespace Game_Of_Life
         }
         private void InitializeTimer()
         {
-            timer.Interval = 500;
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = 1500;
             timer.Enabled = true;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            TimerLabel.Text = DateTime.Now.ToString();
-
+            if (gameRunning == true)
+            {
+                currentBoard = gameLogicInstance.UpdateCurrentBoard();
+                updateGameBoard();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -104,6 +127,7 @@ namespace Game_Of_Life
 
         private void updateGameBoard()
         {
+            ConvertArrayTo2D();
             GridView.Rows.Clear();
             GridView.Refresh();
             int width = currentBoard2D.GetLength(0);
@@ -174,12 +198,11 @@ namespace Game_Of_Life
             if (gameRunning == true)
             {
                 currentBoard = gameLogicInstance.UpdateCurrentBoard();
-                ConvertArrayTo2D();
                 updateGameBoard();
             }
             else
             {
-                MessageBox.Show("You must create a random game first!");
+                MessageBox.Show("You must create a random game or load one in first!");
             }
         }
 
