@@ -72,23 +72,38 @@ namespace Game_Of_Life
 
         private void updateGameBoard()
         {
+            GridView.Rows.Clear();
+            GridView.Refresh();
             int width = currentBoard2D.GetLength(0);
             int height = currentBoard2D.GetLength(1);
+
 
             this.GridView.ColumnCount = width;
 
             for (int r = 0; r < height; r++)
             {
                 DataGridViewRow row = new DataGridViewRow();
+                DataGridViewColumn column = GridView.Columns[r];
+                column.Width = GridView.Width / 7;
+                row.Height = column.Width;
+
                 row.CreateCells(this.GridView);
 
                 for (int c = 0; c < width; c++)
                 {
                     row.Cells[c].Value = currentBoard2D[r, c];
+
+                    if(currentBoard2D[r,c] == true)
+                    {
+                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
+                    }
+                    else if(currentBoard2D[r,c] == false)
+                    {
+                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 57, 255, 20);
+                    }
                 }
 
                 this.GridView.Rows.Add(row);
-
                 //rita ut nästa spelplan
 
 
@@ -109,9 +124,6 @@ namespace Game_Of_Life
                 MessageBox.Show("You must create a random game first!");
             }
         }
-
-
-
 
         private void ConvertArrayTo2D()
         {
