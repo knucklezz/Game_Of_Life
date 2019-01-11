@@ -122,7 +122,7 @@ namespace Game_Of_Life
                 //currentBoard = gameLogicInstance.GetNextGeneration();
             }
 
-
+            nrPlayedGens++;
             // After showing the last saved generation
             // Check if there is something else that should happen here, is there a timer, something else...
             // Or if there should even be a message box popping up here? Maybe not?
@@ -151,7 +151,7 @@ namespace Game_Of_Life
             if (gameRunning == true)
             {
                 currentBoard = gameLogicInstance.UpdateCurrentBoard();
-                updateGameBoard(currentBoard);
+                updateGameBoard();
             }
             else
             {
