@@ -58,17 +58,18 @@
             this.BackPanel.Controls.Add(this.StartButton);
             this.BackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackPanel.Location = new System.Drawing.Point(0, 0);
-            this.BackPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.BackPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BackPanel.Name = "BackPanel";
-            this.BackPanel.Size = new System.Drawing.Size(708, 548);
+            this.BackPanel.Size = new System.Drawing.Size(812, 672);
             this.BackPanel.TabIndex = 0;
             // 
             // TimerLabel
             // 
             this.TimerLabel.AutoSize = true;
-            this.TimerLabel.Location = new System.Drawing.Point(30, 194);
+            this.TimerLabel.Location = new System.Drawing.Point(40, 239);
+            this.TimerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TimerLabel.Name = "TimerLabel";
-            this.TimerLabel.Size = new System.Drawing.Size(35, 13);
+            this.TimerLabel.Size = new System.Drawing.Size(46, 17);
             this.TimerLabel.TabIndex = 6;
             this.TimerLabel.Text = "label1";
             // 
@@ -78,10 +79,10 @@
             this.randomGameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.randomGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.randomGameButton.ForeColor = System.Drawing.Color.White;
-            this.randomGameButton.Location = new System.Drawing.Point(2, 124);
-            this.randomGameButton.Margin = new System.Windows.Forms.Padding(2);
+            this.randomGameButton.Location = new System.Drawing.Point(3, 153);
+            this.randomGameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.randomGameButton.Name = "randomGameButton";
-            this.randomGameButton.Size = new System.Drawing.Size(102, 43);
+            this.randomGameButton.Size = new System.Drawing.Size(136, 53);
             this.randomGameButton.TabIndex = 5;
             this.randomGameButton.Text = "Random";
             this.randomGameButton.UseVisualStyleBackColor = false;
@@ -91,10 +92,10 @@
             // 
             this.GridPanel.BackColor = System.Drawing.Color.DimGray;
             this.GridPanel.Controls.Add(this.GridView);
-            this.GridPanel.Location = new System.Drawing.Point(106, 2);
-            this.GridPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.GridPanel.Location = new System.Drawing.Point(141, 2);
+            this.GridPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridPanel.Name = "GridPanel";
-            this.GridPanel.Size = new System.Drawing.Size(600, 650);
+            this.GridPanel.Size = new System.Drawing.Size(670, 670);
             this.GridPanel.TabIndex = 4;
             // 
             // GridView
@@ -107,10 +108,8 @@
             this.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridView.ColumnHeadersVisible = false;
             this.GridView.Enabled = false;
-            this.GridView.GridColor = System.Drawing.Color.White;
-            this.GridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.GridView.Location = new System.Drawing.Point(3, 2);
-            this.GridView.Margin = new System.Windows.Forms.Padding(2);
+            this.GridView.Location = new System.Drawing.Point(0, 0);
+            this.GridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridView.MultiSelect = false;
             this.GridView.Name = "GridView";
             this.GridView.RowHeadersVisible = false;
@@ -121,7 +120,7 @@
             this.GridView.ShowCellToolTips = false;
             this.GridView.ShowEditingIcon = false;
             this.GridView.ShowRowErrors = false;
-            this.GridView.Size = new System.Drawing.Size(595, 542);
+            this.GridView.Size = new System.Drawing.Size(670, 670);
             this.GridView.TabIndex = 0;
             // 
             // LoadSaveButton
@@ -130,10 +129,10 @@
             this.LoadSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadSaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadSaveButton.ForeColor = System.Drawing.Color.White;
-            this.LoadSaveButton.Location = new System.Drawing.Point(2, 504);
-            this.LoadSaveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadSaveButton.Location = new System.Drawing.Point(3, 620);
+            this.LoadSaveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoadSaveButton.Name = "LoadSaveButton";
-            this.LoadSaveButton.Size = new System.Drawing.Size(102, 43);
+            this.LoadSaveButton.Size = new System.Drawing.Size(136, 53);
             this.LoadSaveButton.TabIndex = 3;
             this.LoadSaveButton.Text = "Load/Save";
             this.LoadSaveButton.UseVisualStyleBackColor = false;
@@ -145,10 +144,10 @@
             this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.NextButton.ForeColor = System.Drawing.Color.White;
-            this.NextButton.Location = new System.Drawing.Point(2, 82);
-            this.NextButton.Margin = new System.Windows.Forms.Padding(2);
+            this.NextButton.Location = new System.Drawing.Point(3, 101);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(102, 43);
+            this.NextButton.Size = new System.Drawing.Size(136, 53);
             this.NextButton.TabIndex = 2;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = false;
@@ -160,10 +159,10 @@
             this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StopButton.ForeColor = System.Drawing.Color.White;
-            this.StopButton.Location = new System.Drawing.Point(2, 42);
-            this.StopButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StopButton.Location = new System.Drawing.Point(3, 52);
+            this.StopButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(102, 43);
+            this.StopButton.Size = new System.Drawing.Size(136, 53);
             this.StopButton.TabIndex = 1;
             this.StopButton.Text = "Stop";
             this.StopButton.UseVisualStyleBackColor = false;
@@ -175,10 +174,10 @@
             this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.StartButton.ForeColor = System.Drawing.Color.White;
-            this.StartButton.Location = new System.Drawing.Point(2, 2);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StartButton.Location = new System.Drawing.Point(3, 2);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(102, 43);
+            this.StartButton.Size = new System.Drawing.Size(136, 53);
             this.StartButton.TabIndex = 0;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = false;
@@ -199,15 +198,17 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(708, 548);
+            this.ClientSize = new System.Drawing.Size(812, 672);
             this.Controls.Add(this.BackPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.BackPanel.ResumeLayout(false);
             this.BackPanel.PerformLayout();
