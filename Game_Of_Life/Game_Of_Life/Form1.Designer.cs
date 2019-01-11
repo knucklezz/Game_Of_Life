@@ -30,15 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.BackPanel = new System.Windows.Forms.Panel();
+            this.TimerLabel = new System.Windows.Forms.Label();
             this.randomGameButton = new System.Windows.Forms.Button();
             this.GridPanel = new System.Windows.Forms.Panel();
+            this.GridView = new System.Windows.Forms.DataGridView();
             this.LoadSaveButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.TimerLabel = new System.Windows.Forms.Label();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.BackPanel.SuspendLayout();
+            this.GridPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
             this.SuspendLayout();
             // 
             // BackPanel
@@ -54,10 +58,19 @@
             this.BackPanel.Controls.Add(this.StartButton);
             this.BackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackPanel.Location = new System.Drawing.Point(0, 0);
-            this.BackPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.BackPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BackPanel.Name = "BackPanel";
-            this.BackPanel.Size = new System.Drawing.Size(708, 586);
+            this.BackPanel.Size = new System.Drawing.Size(708, 548);
             this.BackPanel.TabIndex = 0;
+            // 
+            // TimerLabel
+            // 
+            this.TimerLabel.AutoSize = true;
+            this.TimerLabel.Location = new System.Drawing.Point(30, 194);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(35, 13);
+            this.TimerLabel.TabIndex = 6;
+            this.TimerLabel.Text = "label1";
             // 
             // randomGameButton
             // 
@@ -66,7 +79,7 @@
             this.randomGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.randomGameButton.ForeColor = System.Drawing.Color.White;
             this.randomGameButton.Location = new System.Drawing.Point(2, 124);
-            this.randomGameButton.Margin = new System.Windows.Forms.Padding(2);
+            this.randomGameButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.randomGameButton.Name = "randomGameButton";
             this.randomGameButton.Size = new System.Drawing.Size(102, 43);
             this.randomGameButton.TabIndex = 5;
@@ -77,12 +90,35 @@
             // GridPanel
             // 
             this.GridPanel.BackColor = System.Drawing.Color.DimGray;
+            this.GridPanel.Controls.Add(this.GridView);
             this.GridPanel.Location = new System.Drawing.Point(106, 2);
-            this.GridPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.GridPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GridPanel.Name = "GridPanel";
             this.GridPanel.Size = new System.Drawing.Size(600, 650);
             this.GridPanel.TabIndex = 4;
-            this.GridPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.GridPanel_Paint);
+            // 
+            // GridView
+            // 
+            this.GridView.AllowUserToAddRows = false;
+            this.GridView.AllowUserToDeleteRows = false;
+            this.GridView.AllowUserToResizeColumns = false;
+            this.GridView.AllowUserToResizeRows = false;
+            this.GridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridView.ColumnHeadersVisible = false;
+            this.GridView.Location = new System.Drawing.Point(3, 2);
+            this.GridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridView.Name = "GridView";
+            this.GridView.RowHeadersVisible = false;
+            this.GridView.RowTemplate.Height = 24;
+            this.GridView.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.GridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.GridView.ShowCellErrors = false;
+            this.GridView.ShowCellToolTips = false;
+            this.GridView.ShowEditingIcon = false;
+            this.GridView.ShowRowErrors = false;
+            this.GridView.Size = new System.Drawing.Size(595, 542);
+            this.GridView.TabIndex = 0;
             // 
             // LoadSaveButton
             // 
@@ -90,8 +126,8 @@
             this.LoadSaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadSaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadSaveButton.ForeColor = System.Drawing.Color.White;
-            this.LoadSaveButton.Location = new System.Drawing.Point(2, 540);
-            this.LoadSaveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadSaveButton.Location = new System.Drawing.Point(2, 504);
+            this.LoadSaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LoadSaveButton.Name = "LoadSaveButton";
             this.LoadSaveButton.Size = new System.Drawing.Size(102, 43);
             this.LoadSaveButton.TabIndex = 3;
@@ -106,7 +142,7 @@
             this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.NextButton.ForeColor = System.Drawing.Color.White;
             this.NextButton.Location = new System.Drawing.Point(2, 82);
-            this.NextButton.Margin = new System.Windows.Forms.Padding(2);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(102, 43);
             this.NextButton.TabIndex = 2;
@@ -121,7 +157,7 @@
             this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StopButton.ForeColor = System.Drawing.Color.White;
             this.StopButton.Location = new System.Drawing.Point(2, 42);
-            this.StopButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StopButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(102, 43);
             this.StopButton.TabIndex = 1;
@@ -136,7 +172,7 @@
             this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.StartButton.ForeColor = System.Drawing.Color.White;
             this.StartButton.Location = new System.Drawing.Point(2, 2);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(102, 43);
             this.StartButton.TabIndex = 0;
@@ -149,14 +185,13 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // TimerLabel
+            // entityCommand1
             // 
-            this.TimerLabel.AutoSize = true;
-            this.TimerLabel.Location = new System.Drawing.Point(27, 196);
-            this.TimerLabel.Name = "TimerLabel";
-            this.TimerLabel.Size = new System.Drawing.Size(35, 13);
-            this.TimerLabel.TabIndex = 6;
-            this.TimerLabel.Text = "label1";
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
             // 
             // Form1
             // 
@@ -164,14 +199,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(708, 586);
+            this.ClientSize = new System.Drawing.Size(708, 548);
             this.Controls.Add(this.BackPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.BackPanel.ResumeLayout(false);
             this.BackPanel.PerformLayout();
+            this.GridPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +225,8 @@
         private System.Windows.Forms.Button randomGameButton;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label TimerLabel;
+        private System.Windows.Forms.DataGridView GridView;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
     }
 }
 

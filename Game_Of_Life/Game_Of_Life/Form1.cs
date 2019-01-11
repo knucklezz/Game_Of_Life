@@ -19,7 +19,7 @@ namespace Game_Of_Life
         private int nrPlayedGens;
         private int nrLoadedGens;
         private bool[][] currentBoard;
-
+        private bool[,] currentBoard2D = new bool[7, 7];
 
         public Form1()
         {
@@ -55,20 +55,25 @@ namespace Game_Of_Life
             LoadSaveForm.Show();
         }
 
-        private void GridPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
             InitializeTimer();
-            updateGameBoard(currentBoard);
+            updateGameBoard();
         }
 
         private void randomGameButton_Click(object sender, EventArgs e)
         {
-           currentBoard = gameLogicInstance.GetNewGame();
+            currentBoard = gameLogicInstance.GetNewGame();
+            ConvertArrayTo2D();
+
+            //Rita ut första spelplanen
+
+            updateGameBoard();
+
+            //_________________________
+
+
             gameRunning = true;
         }
         private void InitializeTimer()
@@ -81,7 +86,7 @@ namespace Game_Of_Life
         private void timer_Tick(object sender, EventArgs e)
         {
             TimerLabel.Text = DateTime.Now.ToString();
-            
+
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -91,10 +96,31 @@ namespace Game_Of_Life
 
         }
 
-        private void updateGameBoard(bool[][] currentBoard)
+        private void updateGameBoard()
         {
-            // Every time a new generation is shown
-            nrPlayedGens++;
+            int width = currentBoard2D.GetLength(0);
+            int height = currentBoard2D.GetLength(1);
+
+            this.GridView.ColumnCount = width;
+
+            for (int r = 0; r < height; r++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(this.GridView);
+
+                for (int c = 0; c < width; c++)
+                {
+                    row.Cells[c].Value = currentBoard2D[r, c];
+                }
+
+                this.GridView.Rows.Add(row);
+
+                //rita ut nästa spelplan
+
+
+                //----------------------
+                //currentBoard = gameLogicInstance.GetNextGeneration();
+            }
 
 
             // After showing the last saved generation
@@ -130,6 +156,23 @@ namespace Game_Of_Life
             else
             {
                 MessageBox.Show("You must create a random game first!");
+            }
+        }
+
+
+
+
+        private void ConvertArrayTo2D()
+        {
+            for (int i = 0; i < currentBoard.Length; i++)
+            {
+                bool[] innerArray = currentBoard[i];
+
+                for (int j = 0; j < innerArray.Length; j++)
+                {
+                    currentBoard2D[i, j] = currentBoard[i][j];
+
+                }
             }
         }
     }
