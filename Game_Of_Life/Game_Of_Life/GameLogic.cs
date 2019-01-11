@@ -163,5 +163,7 @@ namespace Game_Of_Life
             return nrLivingNeighbours;
         }
 
+        
+
     }
 }
