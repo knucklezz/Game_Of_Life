@@ -11,6 +11,8 @@ namespace Game_Of_Life
     {
         private int nrRows;
         private int nrColumns;
+        private int nrLoadedGensShown;
+        private bool gameIsLoaded;
         private bool[][] currentBoard;
         public GameName currentGame;
 
@@ -62,7 +64,7 @@ namespace Game_Of_Life
         /// Calculates and returns the next generation of the game from current board.
         /// </summary>
         /// <returns></returns>
-        public bool[][] GetNextGeneration()
+        private bool[][] GetNextGeneration()
         {
             bool[][] newBoard = new bool[nrRows][];
             int nrNeighbours = 0;
@@ -111,19 +113,55 @@ namespace Game_Of_Life
         {
             currentGame = game;
             currentBoard = currentGame.generations[0].Board;
+            gameIsLoaded = true;
         }
 
 
         /// <summary>
-        /// Returns the first generation of the current game
+        /// Updates the current board to a new generation if currentGame is a new game and the next saved one belonging to current game
+        /// if currentGame is loaded from database.
+        /// </summary>
+        public bool[][] UpdateCurrentBoard()
+        {
+            if (gameIsLoaded)
+            {
+                // Show the next generation of the loaded game
+                currentBoard = GetLoadedGameBoard();
+
+                // If all saved generations have been shown, continue the game as normal
+                if (currentBoard == null)
+                {
+                    gameIsLoaded = false;
+                    nrLoadedGensShown = 0;
+                    currentBoard = GetNextGeneration();
+                }
+                else
+                    nrLoadedGensShown++;
+            }
+            else
+            {
+                currentBoard = GetNextGeneration();
+            }
+            return currentBoard;
+        }
+
+
+        /// <summary>
+        /// Returns the next generation of the current game, or null if the current one is the last.
         /// </summary>
         /// <returns></returns>
         public bool[][] GetLoadedGameBoard()
         {
-            // Get the board of the first generation of the saved game
-            currentBoard = currentGame.generations[0].Board;
-
-            return currentBoard;
+            // Get the board of the next generation of the saved game
+            if(nrLoadedGensShown >= currentGame.generations.Count)
+            {
+                return null;
+            }
+            else
+            {
+                currentBoard = currentGame.generations[nrLoadedGensShown].Board;
+                return currentBoard;
+            }
         }
 
 

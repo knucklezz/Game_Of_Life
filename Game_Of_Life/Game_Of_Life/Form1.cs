@@ -15,7 +15,9 @@ namespace Game_Of_Life
     {
         private bool gameRunning = false;
         private GameLogic gameLogicInstance;
-        
+        // Reset every time a new game is started or loaded
+        private int nrPlayedGens;
+        private int nrLoadedGens;
         private bool[][] currentBoard;
 
 
@@ -43,6 +45,7 @@ namespace Game_Of_Life
         public void SetLoadedGame(GameName gameToLoad)
         {
             gameLogicInstance.SetLoadedGame(gameToLoad);
+            nrLoadedGens = gameToLoad.generations.Count;
         }
 
 
@@ -90,14 +93,38 @@ namespace Game_Of_Life
 
         private void updateGameBoard(bool[][] currentBoard)
         {
+            // Every time a new generation is shown
+            nrPlayedGens++;
 
+
+            // After showing the last saved generation
+            // Check if there is something else that should happen here, is there a timer, something else...
+            // Or if there should even be a message box popping up here? Maybe not?
+            // Also if nrPlayedGens is counting correctly; is it one step late?
+            if (nrPlayedGens == nrLoadedGens)
+            {
+                string message = "This is the last saved generation of the game. \nContinue playing?";
+                string title = "End of save";
+                var dialogResult = MessageBox.Show(message, title, MessageBoxButtons.YesNo);
+                if(dialogResult == DialogResult.Yes)
+                {
+                    // Continue running game
+                }
+                else
+                {
+
+                    gameRunning = false;
+                }
+                // Reset counter
+                nrLoadedGens = -1;
+            }
         }
 
         private void NextButton_Click(object sender, EventArgs e)
         {
             if (gameRunning == true)
             {
-                currentBoard = gameLogicInstance.GetNextGeneration();
+                currentBoard = gameLogicInstance.UpdateCurrentBoard();
                 updateGameBoard(currentBoard);
             }
             else
