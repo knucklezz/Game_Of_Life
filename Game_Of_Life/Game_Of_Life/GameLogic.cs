@@ -9,18 +9,25 @@ namespace Game_Of_Life
 {
     class GameLogic
     {
-        private static int nrRows = 7;
-        private static int nrColumns = 7;
-
+        private int nrRows;
+        private int nrColumns;
         private bool[][] currentBoard;
-        private GameName currentGame;
+        public GameName currentGame;
 
-        // Generate and return a random starting board for a new game
+        public GameLogic()
+        {
+            nrRows = 7;
+            nrColumns = 7;
+        }
+
+
+        /// <summary>
+        /// Generates and returns a new game board.
+        /// </summary>
+        /// <returns></returns>
         public bool[][] GetNewGame()
         {
-            
             currentGame = new GameName();
-            // ////// Needs at least a couple of cells that will survive and at least one that will be born in the next generation
             currentBoard = new bool[nrRows][];
             Random random = new Random();
 
@@ -42,7 +49,7 @@ namespace Game_Of_Life
             Generation gen = new Generation
             {
                 Board = currentBoard,
-                GameId = currentGame
+                Game = currentGame
             };
 
             currentGame.generations.Add(gen);
@@ -51,8 +58,10 @@ namespace Game_Of_Life
         }
 
 
-        // Check how many cells are alive next to each cell, kill and birth new ones accordingly
-        // Return the new generation
+        /// <summary>
+        /// Calculates and returns the next generation of the game from current board.
+        /// </summary>
+        /// <returns></returns>
         public bool[][] GetNextGeneration()
         {
             bool[][] newBoard = new bool[nrRows][];
@@ -87,46 +96,45 @@ namespace Game_Of_Life
             Generation gen = new Generation
             {
                 Board = currentBoard,
-                GameId = currentGame
+                Game = currentGame
             };
             currentGame.generations.Add(gen);
             return newBoard;
         }
 
-
-        // Return all generations of the specified game
-        public void GetSavedGame(string gameToLoad)
+        // Would it not have been amazing with some kind of note telling me what I was supposed to do with this...
+        /// <summary>
+        /// Sets current game to parameter game, and current board to the first generation of that game
+        /// </summary>
+        /// <param name="game"></param>
+        public void SetLoadedGame(GameName game)
         {
-            // crud read method
-            // Generate a list of boards from database data
-            // Return list?
+            currentGame = game;
+            currentBoard = currentGame.generations[0].Board;
         }
 
 
-        // Return names of all saved games
-        public List<GameName> GetGameNames()
+        /// <summary>
+        /// Returns the first generation of the current game
+        /// </summary>
+        /// <returns></returns>
+        public bool[][] GetLoadedGameBoard()
         {
-            List<GameName> names = new List<GameName>();
+            // Get the board of the first generation of the saved game
+            currentBoard = currentGame.generations[0].Board;
 
-            return names;
-        }
-
-
-        // Save the game + generations with the specified name
-        public void SaveGame(string nameOfSave)
-        {
-            // Call crud save method
-        }
-
-
-        // Delete a saved game and all linked generations
-        public void DeleteSavedGame(string nameOfSave)
-        {
-
+            return currentBoard;
         }
 
 
         // Check the number of living cells neighbouring a cell located on the board coordinates (x,y)
+        /// <summary>
+        /// Returns the number of cells neighbouring the cell on board location [x][y] that are alive.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="currentBoard"></param>
+        /// <returns></returns>
         private int NrOfLivingNeighbours(int x, int y, bool[][] currentBoard)
         {
             int nrLivingNeighbours = 0;
