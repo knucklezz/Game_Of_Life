@@ -16,10 +16,10 @@ namespace Game_Of_Life
         private bool[][] currentBoard;
         public GameName currentGame;
 
-        public GameLogic()
+        public GameLogic(int boardSize)
         {
-            nrRows = 7;
-            nrColumns = 7;
+            nrRows = boardSize;
+            nrColumns = boardSize;
         }
 
 

@@ -88,24 +88,6 @@ namespace Game_Of_Life
 
                 context.SaveChanges();
             }
-            SaveGenerations(game.generations);
-        }
-
-
-        /// <summary>
-        /// Saves a list of generations
-        /// </summary>
-        /// <param name="generations"></param>
-        private void SaveGenerations(List<Generation> generations)
-        {
-            using(GameContext context = new GameContext())
-            {
-                foreach(var gen in generations)
-                {
-                    context.Generations.Add(gen);
-                }
-                context.SaveChanges();
-            }
         }
 
 
