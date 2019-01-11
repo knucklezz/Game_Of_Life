@@ -77,7 +77,7 @@ namespace Game_Of_Life
 
 
         /// <summary>
-        ///  Save a game and all related generations
+        ///  Saves a game and all related generations
         /// </summary>
         /// <param name="game"></param>
         public void SaveGame(GameName game)

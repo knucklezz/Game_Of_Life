@@ -58,7 +58,7 @@ namespace Game_Of_Life.Entities
                             // Check if reached end of row and/or end of array
                             if (j < row.Length - 1) // Not end of row
                                 BoardData += ",";
-                            else if (j == row.Length - 1 && rowNr != data.GetLength(0)) // End of row, not last row
+                            else if (j == row.Length - 1 && rowNr != data.GetLength(0) -1) // End of row, not last row
                                 BoardData += ":";
                         }
                     }

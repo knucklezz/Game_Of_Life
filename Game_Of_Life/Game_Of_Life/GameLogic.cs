@@ -56,6 +56,7 @@ namespace Game_Of_Life
 
             currentGame.generations.Add(gen);
 
+            
             return currentBoard;
         }
 
@@ -190,7 +191,6 @@ namespace Game_Of_Life
                 {
                     for (int j = y - 1; j <= y + 1; j++)
                     {
-                        System.Diagnostics.Debug.WriteLine("x " + x + " i " + i + " ; y " + y + " j " + j);
                         // Make sure index not out of bounds
                         if (j < 0 || j == currentBoard[i].Length)
                         {

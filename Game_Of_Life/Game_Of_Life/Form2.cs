@@ -50,22 +50,20 @@ namespace Game_Of_Life
         }
 
 
-        // TODO
-        // Call the method in Form1 that updates the game board
-        // Do we want to close this form after loading a game?
         private void LoadButton_Click(object sender, EventArgs e)
         {
             GameName loadedGame = GetGameFromListBox();
             if(loadedGame == null)
             {
-                
+                ;
             }
             else
             {
                 loadedGame.generations = Repos.GetGenerations(loadedGame);
+                
                 // Update mainForm
                 mainForm.SetLoadedGame(loadedGame);
-                // Update board as well?
+                
                 this.Dispose();
             }
         }

@@ -49,6 +49,10 @@ namespace Game_Of_Life
         {
             gameLogicInstance.SetLoadedGame(gameToLoad);
             nrLoadedGens = gameToLoad.generations.Count;
+
+            currentBoard = gameLogicInstance.UpdateCurrentBoard();
+            ConvertArrayTo2D();
+            updateGameBoard();
         }
 
 
