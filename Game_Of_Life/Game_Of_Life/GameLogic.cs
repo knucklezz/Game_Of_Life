@@ -16,10 +16,10 @@ namespace Game_Of_Life
         private bool[][] currentBoard;
         public GameName currentGame;
 
-        public GameLogic()
+        public GameLogic(int boardSize)
         {
-            nrRows = 7;
-            nrColumns = 7;
+            nrRows = boardSize;
+            nrColumns = boardSize;
         }
 
 
@@ -190,7 +190,6 @@ namespace Game_Of_Life
                 {
                     for (int j = y - 1; j <= y + 1; j++)
                     {
-                        System.Diagnostics.Debug.WriteLine("x " + x + " i " + i + " ; y " + y + " j " + j);
                         // Make sure index not out of bounds
                         if (j < 0 || j == currentBoard[i].Length)
                         {

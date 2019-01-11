@@ -13,18 +13,19 @@ namespace Game_Of_Life
 {
     public partial class Form1 : Form
     {
+        private static int boardSize = 15;
         private bool gameRunning = false;
         private GameLogic gameLogicInstance;
         // Reset every time a new game is started or loaded
         private int nrPlayedGens;
         private int nrLoadedGens;
         private bool[][] currentBoard;
-        private bool[,] currentBoard2D = new bool[7, 7];
+        private bool[,] currentBoard2D = new bool[boardSize, boardSize];
 
         public Form1()
         {
             InitializeComponent();
-            gameLogicInstance = new GameLogic();
+            gameLogicInstance = new GameLogic(boardSize);
             System.Diagnostics.Debug.Write("");
         }
 
@@ -47,6 +48,10 @@ namespace Game_Of_Life
         {
             gameLogicInstance.SetLoadedGame(gameToLoad);
             nrLoadedGens = gameToLoad.generations.Count;
+
+            currentBoard = gameLogicInstance.UpdateCurrentBoard();
+            ConvertArrayTo2D();
+            updateGameBoard();
         }
 
 
@@ -111,7 +116,7 @@ namespace Game_Of_Life
             {
                 DataGridViewRow row = new DataGridViewRow();
                 DataGridViewColumn column = GridView.Columns[r];
-                column.Width = GridView.Width / 7;
+                column.Width = GridView.Width / boardSize;
                 row.Height = column.Width;
 
                 row.CreateCells(this.GridView);
