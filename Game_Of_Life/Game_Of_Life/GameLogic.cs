@@ -11,6 +11,7 @@ namespace Game_Of_Life
     {
         private int nrRows;
         private int nrColumns;
+
         private bool[][] currentBoard;
         public GameName currentGame;
 
@@ -114,16 +115,27 @@ namespace Game_Of_Life
         }
 
 
+
+
+
+
         /// <summary>
-        /// Returns the first generation of the current game
+        /// Returns the generation of the current game specified by the parameter
         /// </summary>
         /// <returns></returns>
-        public bool[][] GetLoadedGameBoard()
+        public bool[][] GetLoadedGameBoard(int boardNr)
         {
-            // Get the board of the first generation of the saved game
-            currentBoard = currentGame.generations[0].Board;
+            if (boardNr >= currentGame.generations.Count)
+            {
+                return null;
+            }
+            else
+            {
+                // Get the i:th board of the current game
+                currentBoard = currentGame.generations[boardNr].Board;
 
-            return currentBoard;
+                return currentBoard;
+            }
         }
 
 
