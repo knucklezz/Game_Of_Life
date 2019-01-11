@@ -60,7 +60,7 @@
             this.BackPanel.Location = new System.Drawing.Point(0, 0);
             this.BackPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BackPanel.Name = "BackPanel";
-            this.BackPanel.Size = new System.Drawing.Size(944, 674);
+            this.BackPanel.Size = new System.Drawing.Size(812, 672);
             this.BackPanel.TabIndex = 0;
             // 
             // TimerLabel
@@ -95,7 +95,7 @@
             this.GridPanel.Location = new System.Drawing.Point(141, 2);
             this.GridPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridPanel.Name = "GridPanel";
-            this.GridPanel.Size = new System.Drawing.Size(800, 800);
+            this.GridPanel.Size = new System.Drawing.Size(670, 670);
             this.GridPanel.TabIndex = 4;
             // 
             // GridView
@@ -107,8 +107,10 @@
             this.GridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridView.ColumnHeadersVisible = false;
-            this.GridView.Location = new System.Drawing.Point(4, 2);
+            this.GridView.Enabled = false;
+            this.GridView.Location = new System.Drawing.Point(0, 0);
             this.GridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridView.MultiSelect = false;
             this.GridView.Name = "GridView";
             this.GridView.RowHeadersVisible = false;
             this.GridView.RowTemplate.Height = 24;
@@ -118,7 +120,7 @@
             this.GridView.ShowCellToolTips = false;
             this.GridView.ShowEditingIcon = false;
             this.GridView.ShowRowErrors = false;
-            this.GridView.Size = new System.Drawing.Size(793, 667);
+            this.GridView.Size = new System.Drawing.Size(670, 670);
             this.GridView.TabIndex = 0;
             // 
             // LoadSaveButton
@@ -196,15 +198,17 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(944, 674);
+            this.ClientSize = new System.Drawing.Size(812, 672);
             this.Controls.Add(this.BackPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.BackPanel.ResumeLayout(false);
             this.BackPanel.PerformLayout();
