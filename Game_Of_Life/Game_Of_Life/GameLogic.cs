@@ -9,18 +9,27 @@ namespace Game_Of_Life
 {
     class GameLogic
     {
-        private static int nrRows = 7;
-        private static int nrColumns = 7;
-
+        private int nrRows;
+        private int nrColumns;
+        private int nrLoadedGensShown;
+        private bool gameIsLoaded;
         private bool[][] currentBoard;
-        private GameName currentGame;
+        public GameName currentGame;
 
-        // Generate and return a random starting board for a new game
+        public GameLogic()
+        {
+            nrRows = 7;
+            nrColumns = 7;
+        }
+
+
+        /// <summary>
+        /// Generates and returns a new game board.
+        /// </summary>
+        /// <returns></returns>
         public bool[][] GetNewGame()
         {
-            
             currentGame = new GameName();
-            // ////// Needs at least a couple of cells that will survive and at least one that will be born in the next generation
             currentBoard = new bool[nrRows][];
             Random random = new Random();
 
@@ -42,7 +51,7 @@ namespace Game_Of_Life
             Generation gen = new Generation
             {
                 Board = currentBoard,
-                GameId = currentGame
+                Game = currentGame
             };
 
             currentGame.generations.Add(gen);
@@ -51,9 +60,11 @@ namespace Game_Of_Life
         }
 
 
-        // Check how many cells are alive next to each cell, kill and birth new ones accordingly
-        // Return the new generation
-        public bool[][] GetNextGeneration()
+        /// <summary>
+        /// Calculates and returns the next generation of the game from current board.
+        /// </summary>
+        /// <returns></returns>
+        private bool[][] GetNextGeneration()
         {
             bool[][] newBoard = new bool[nrRows][];
             int nrNeighbours = 0;
@@ -87,46 +98,81 @@ namespace Game_Of_Life
             Generation gen = new Generation
             {
                 Board = currentBoard,
-                GameId = currentGame
+                Game = currentGame
             };
             currentGame.generations.Add(gen);
             return newBoard;
         }
 
-
-        // Return all generations of the specified game
-        public void GetSavedGame(string gameToLoad)
+        // Would it not have been amazing with some kind of note telling me what I was supposed to do with this...
+        /// <summary>
+        /// Sets current game to parameter game, and current board to the first generation of that game
+        /// </summary>
+        /// <param name="game"></param>
+        public void SetLoadedGame(GameName game)
         {
-            // crud read method
-            // Generate a list of boards from database data
-            // Return list?
+            currentGame = game;
+            currentBoard = currentGame.generations[0].Board;
+            gameIsLoaded = true;
         }
 
 
-        // Return names of all saved games
-        public List<GameName> GetGameNames()
+        /// <summary>
+        /// Updates the current board to a new generation if currentGame is a new game and the next saved one belonging to current game
+        /// if currentGame is loaded from database.
+        /// </summary>
+        public bool[][] UpdateCurrentBoard()
         {
-            List<GameName> names = new List<GameName>();
+            if (gameIsLoaded)
+            {
+                // Show the next generation of the loaded game
+                currentBoard = GetLoadedGameBoard();
 
-            return names;
+                // If all saved generations have been shown, continue the game as normal
+                if (currentBoard == null)
+                {
+                    gameIsLoaded = false;
+                    nrLoadedGensShown = 0;
+                    currentBoard = GetNextGeneration();
+                }
+                else
+                    nrLoadedGensShown++;
+            }
+            else
+            {
+                currentBoard = GetNextGeneration();
+            }
+            return currentBoard;
         }
 
 
-        // Save the game + generations with the specified name
-        public void SaveGame(string nameOfSave)
+        /// <summary>
+        /// Returns the next generation of the current game, or null if the current one is the last.
+        /// </summary>
+        /// <returns></returns>
+        public bool[][] GetLoadedGameBoard()
         {
-            // Call crud save method
-        }
-
-
-        // Delete a saved game and all linked generations
-        public void DeleteSavedGame(string nameOfSave)
-        {
-
+            // Get the board of the next generation of the saved game
+            if(nrLoadedGensShown >= currentGame.generations.Count)
+            {
+                return null;
+            }
+            else
+            {
+                currentBoard = currentGame.generations[nrLoadedGensShown].Board;
+                return currentBoard;
+            }
         }
 
 
         // Check the number of living cells neighbouring a cell located on the board coordinates (x,y)
+        /// <summary>
+        /// Returns the number of cells neighbouring the cell on board location [x][y] that are alive.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="currentBoard"></param>
+        /// <returns></returns>
         private int NrOfLivingNeighbours(int x, int y, bool[][] currentBoard)
         {
             int nrLivingNeighbours = 0;
