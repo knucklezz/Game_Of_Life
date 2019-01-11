@@ -117,15 +117,17 @@ namespace Game_Of_Life
 
                 for (int c = 0; c < width; c++)
                 {
-                    row.Cells[c].Value = currentBoard2D[r, c];
+                   // row.Cells[c].Value = currentBoard2D[r, c];
 
                     if(currentBoard2D[r,c] == true)
                     {
                         row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 210, 82, 127);
                     }
                     else if(currentBoard2D[r,c] == false)
                     {
                         row.Cells[c].Style.BackColor = Color.FromArgb(255, 57, 255, 20);
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 255, 20);
                     }
                 }
 
@@ -166,6 +168,7 @@ namespace Game_Of_Life
             if (gameRunning == true)
             {
                 currentBoard = gameLogicInstance.UpdateCurrentBoard();
+                ConvertArrayTo2D();
                 updateGameBoard();
             }
             else
@@ -187,5 +190,7 @@ namespace Game_Of_Life
                 }
             }
         }
+
+        
     }
 }
