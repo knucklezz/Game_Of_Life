@@ -38,6 +38,7 @@ namespace Game_Of_Life
             return gameLogicInstance.currentGame;
         }
 
+
         /// <summary>
         /// Sets the current game and game board in the gameLogicInstance to the parameter gameToLoad
         /// </summary>
@@ -103,6 +104,7 @@ namespace Game_Of_Life
             int width = currentBoard2D.GetLength(0);
             int height = currentBoard2D.GetLength(1);
 
+
             this.GridView.ColumnCount = width;
 
             for (int r = 0; r < height; r++)
@@ -116,8 +118,8 @@ namespace Game_Of_Life
 
                 for (int c = 0; c < width; c++)
                 {
-                    //row.Cells[c].Value = currentBoard2D[r, c];
-                    
+                   // row.Cells[c].Value = currentBoard2D[r, c];
+
                     if(currentBoard2D[r,c] == true)
                     {
                         row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
@@ -167,6 +169,7 @@ namespace Game_Of_Life
             if (gameRunning == true)
             {
                 currentBoard = gameLogicInstance.UpdateCurrentBoard();
+                ConvertArrayTo2D();
                 updateGameBoard();
             }
             else
@@ -189,5 +192,6 @@ namespace Game_Of_Life
             }
         }
 
+        
     }
 }

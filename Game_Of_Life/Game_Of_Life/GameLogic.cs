@@ -104,7 +104,7 @@ namespace Game_Of_Life
             return newBoard;
         }
 
-        // Would it not have been amazing with some kind of note telling me what I was supposed to do with this...
+
         /// <summary>
         /// Sets current game to parameter game, and current board to the first generation of that game
         /// </summary>
@@ -125,18 +125,19 @@ namespace Game_Of_Life
         {
             if (gameIsLoaded)
             {
-                // Show the next generation of the loaded game
-                currentBoard = GetLoadedGameBoard();
-
                 // If all saved generations have been shown, continue the game as normal
-                if (currentBoard == null)
+                if (GetLoadedGameBoard() == null)
                 {
                     gameIsLoaded = false;
                     nrLoadedGensShown = 0;
                     currentBoard = GetNextGeneration();
                 }
                 else
+                {
+                    // Show the next generation of the loaded game
+                    currentBoard = GetLoadedGameBoard();
                     nrLoadedGensShown++;
+                }
             }
             else
             {
@@ -147,7 +148,7 @@ namespace Game_Of_Life
 
 
         /// <summary>
-        /// Returns the next generation of the current game, or null if the current one is the last.
+        /// Returns the next generation of the current loaded game, or null if the current one is the last.
         /// </summary>
         /// <returns></returns>
         public bool[][] GetLoadedGameBoard()
@@ -207,9 +208,7 @@ namespace Game_Of_Life
             }
 
             return nrLivingNeighbours;
-        }
-
-        
+        }        
 
     }
 }
