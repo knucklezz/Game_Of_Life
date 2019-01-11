@@ -38,6 +38,7 @@ namespace Game_Of_Life
             return gameLogicInstance.currentGame;
         }
 
+
         /// <summary>
         /// Sets the current game and game board in the gameLogicInstance to the parameter gameToLoad
         /// </summary>

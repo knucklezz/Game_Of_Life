@@ -44,9 +44,11 @@ namespace Game_Of_Life
                 {
                     game.Name = GameNameBox.Text;
                     Repos.SaveGame(game);
+                    listBoxSavedGames.Items.Add(game.Id + ": " + game.Name);
                 }
             }
         }
+
 
         // TODO
         // Call the method in Form1 that updates the game board
