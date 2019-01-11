@@ -15,6 +15,7 @@ namespace Game_Of_Life
     {
         private static int boardSize = 15;
         private bool gameRunning = false;
+        private bool autoGameRunning = false;
         private GameLogic gameLogicInstance;
         // Reset every time a new game is started or loaded
         private int nrPlayedGens;
@@ -61,7 +62,7 @@ namespace Game_Of_Life
         private void StartButton_Click(object sender, EventArgs e)
         {
             
-            if (gameRunning == true)
+            if (gameRunning == true )
             {
                 if (timer.Enabled)
                 {
@@ -78,10 +79,10 @@ namespace Game_Of_Life
                 MessageBox.Show("create a game");
             }
 
-
+            autoGameRunning = true;
         }
 
-        private void randomGameButton_Click(object sender, EventArgs e)
+        private void NewGameButton_Click(object sender, EventArgs e)
         {
             currentBoard = gameLogicInstance.GetNewGame();
             ConvertArrayTo2D();
@@ -147,13 +148,15 @@ namespace Game_Of_Life
 
                     if(currentBoard2D[r,c] == true)
                     {
-                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
-                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 210, 82, 127);
+                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 57, 255, 20);
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 255, 20);
                     }
                     else if(currentBoard2D[r,c] == false)
                     {
-                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 57, 255, 20);
-                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 255, 20);
+
+
+                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 210, 82, 127);
                     }
                 }
 
@@ -191,14 +194,19 @@ namespace Game_Of_Life
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-            if (gameRunning == true)
+            if (gameRunning == true && autoGameRunning != true)
             {
                 currentBoard = gameLogicInstance.UpdateCurrentBoard();
                 updateGameBoard();
             }
             else
             {
-                MessageBox.Show("You must create a random game or load one in first!");
+                if (autoGameRunning == false)
+                {
+                    MessageBox.Show("You must create a random game or load one in first!");
+                }
+                else;
+                    //Do Nothing
             }
         }
 
