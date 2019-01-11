@@ -30,19 +30,41 @@ namespace Game_Of_Life
             }
         }
         
+        /// <summary>
+        /// Returns all saved games
+        /// </summary>
+        /// <returns></returns>
+        public List<GameName> GetAllGames()
+        {
+            using (GameContext context = new GameContext())
+            {
+                List<GameName> games = new List<GameName>();
+
+                var gens = context.GameNames;
+
+                foreach (var gen in gens)
+                {
+                    games.Add(gen);
+                }
+
+                return games;
+            }
+        }
+
 
         /// <summary>
         /// Returns all generations of a saved game
         /// </summary>
         /// <param name="gameId"></param>
         /// <returns></returns>
-        public List<Generation> GetGenerations(int gameId)
+        public List<Generation> GetGenerations(GameName game)
         {
+            int gameId = game.Id;
             using (GameContext context = new GameContext())
             {
                 List<Generation> generations = new List<Generation>();
 
-                var gens = context.Generations.Where(x => x.GameId.Id == gameId);
+                var gens = context.Generations.Where(x => x.Game.Id == gameId);
 
                 foreach(var gen in gens)
                 {
@@ -66,6 +88,7 @@ namespace Game_Of_Life
 
                 context.SaveChanges();
             }
+            SaveGenerations(game.generations);
         }
 
 
@@ -73,7 +96,7 @@ namespace Game_Of_Life
         /// Saves a list of generations
         /// </summary>
         /// <param name="generations"></param>
-        public void SaveGenerations(List<Generation> generations)
+        private void SaveGenerations(List<Generation> generations)
         {
             using(GameContext context = new GameContext())
             {
@@ -101,7 +124,7 @@ namespace Game_Of_Life
             using (GameContext context = new GameContext())
             {
                 // Delete related generations
-                var gens = context.Generations.Where(x => x.GameId.Id == gameId).ToList();
+                var gens = context.Generations.Where(x => x.Game.Id == gameId).ToList();
                 foreach (var gen in gens)
                 {
                     context.Generations.Remove(gen);

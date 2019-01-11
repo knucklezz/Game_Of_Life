@@ -30,10 +30,10 @@
         {
             this.SaveButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxSavedGames = new System.Windows.Forms.ListBox();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.LoadButton = new System.Windows.Forms.Button();
-            this.GameName = new System.Windows.Forms.TextBox();
+            this.GameNameBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -55,13 +55,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Saved Games";
             // 
-            // listBox1
+            // listBoxSavedGames
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(118, 22);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 134);
-            this.listBox1.TabIndex = 4;
+            this.listBoxSavedGames.FormattingEnabled = true;
+            this.listBoxSavedGames.Location = new System.Drawing.Point(118, 22);
+            this.listBoxSavedGames.Name = "listBoxSavedGames";
+            this.listBoxSavedGames.Size = new System.Drawing.Size(120, 134);
+            this.listBoxSavedGames.TabIndex = 4;
             // 
             // RemoveButton
             // 
@@ -83,22 +83,22 @@
             this.LoadButton.UseVisualStyleBackColor = true;
             this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
-            // GameName
+            // GameNameBox
             // 
-            this.GameName.Location = new System.Drawing.Point(7, 132);
-            this.GameName.Name = "GameName";
-            this.GameName.Size = new System.Drawing.Size(100, 20);
-            this.GameName.TabIndex = 7;
+            this.GameNameBox.Location = new System.Drawing.Point(7, 132);
+            this.GameNameBox.Name = "GameNameBox";
+            this.GameNameBox.Size = new System.Drawing.Size(100, 20);
+            this.GameNameBox.TabIndex = 7;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(246, 193);
-            this.Controls.Add(this.GameName);
+            this.Controls.Add(this.GameNameBox);
             this.Controls.Add(this.LoadButton);
             this.Controls.Add(this.RemoveButton);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxSavedGames);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveButton);
             this.Name = "Form2";
@@ -112,9 +112,9 @@
 
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxSavedGames;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button LoadButton;
-        private System.Windows.Forms.TextBox GameName;
+        private System.Windows.Forms.TextBox GameNameBox;
     }
 }

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.BackPanel = new System.Windows.Forms.Panel();
-            this.TimerLabel = new System.Windows.Forms.Label();
             this.randomGameButton = new System.Windows.Forms.Button();
             this.GridPanel = new System.Windows.Forms.Panel();
             this.LoadSaveButton = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.StopButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.TimerLabel = new System.Windows.Forms.Label();
             this.BackPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,15 +58,6 @@
             this.BackPanel.Name = "BackPanel";
             this.BackPanel.Size = new System.Drawing.Size(708, 586);
             this.BackPanel.TabIndex = 0;
-            // 
-            // TimerLabel
-            // 
-            this.TimerLabel.AutoSize = true;
-            this.TimerLabel.Location = new System.Drawing.Point(30, 194);
-            this.TimerLabel.Name = "TimerLabel";
-            this.TimerLabel.Size = new System.Drawing.Size(35, 13);
-            this.TimerLabel.TabIndex = 6;
-            this.TimerLabel.Text = "label1";
             // 
             // randomGameButton
             // 
@@ -157,6 +148,15 @@
             // 
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // TimerLabel
+            // 
+            this.TimerLabel.AutoSize = true;
+            this.TimerLabel.Location = new System.Drawing.Point(27, 196);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(35, 13);
+            this.TimerLabel.TabIndex = 6;
+            this.TimerLabel.Text = "label1";
             // 
             // Form1
             // 

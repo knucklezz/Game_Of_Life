@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game_Of_Life.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,20 +14,41 @@ namespace Game_Of_Life
     public partial class Form1 : Form
     {
         private bool gameRunning = false;
-        private GameLogic gameLogicInstance= new GameLogic();
+        private GameLogic gameLogicInstance;
         
         private bool[][] currentBoard;
-
 
 
         public Form1()
         {
             InitializeComponent();
+            gameLogicInstance = new GameLogic();
+            System.Diagnostics.Debug.Write("");
         }
+
+
+        /// <summary>
+        /// Returns the current game from the gameLogicInstance.
+        /// </summary>
+        /// <returns></returns>
+        public GameName GetCurrentGame()
+        {
+            return gameLogicInstance.currentGame;
+        }
+
+        /// <summary>
+        /// Sets the current game and game board in the gameLogicInstance to the parameter gameToLoad
+        /// </summary>
+        /// <param name="gameToLoad"></param>
+        public void SetLoadedGame(GameName gameToLoad)
+        {
+            gameLogicInstance.SetLoadedGame(gameToLoad);
+        }
+
 
         private void LoadSaveButton_Click(object sender, EventArgs e)
         {
-            Form2 LoadSaveForm = new Form2();
+            Form2 LoadSaveForm = new Form2(this);
             LoadSaveForm.Show();
         }
 

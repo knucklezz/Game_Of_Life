@@ -6,7 +6,7 @@ namespace Game_Of_Life.Entities
     public class Generation
     {
         public int Id { get; set; }
-        public GameName GameId { get; set; }
+        public GameName Game { get; set; }
         public string BoardData { get; set; }
 
         public bool[][] Board
