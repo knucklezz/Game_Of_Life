@@ -49,6 +49,7 @@ namespace Game_Of_Life
             gameLogicInstance.SetLoadedGame(gameToLoad);
             nrLoadedGens = gameToLoad.generations.Count;
 
+            gameRunning = true;
             currentBoard = gameLogicInstance.UpdateCurrentBoard();
             ConvertArrayTo2D();
             updateGameBoard();
@@ -125,6 +126,7 @@ namespace Game_Of_Life
 
         }
 
+
         private void updateGameBoard()
         {
             ConvertArrayTo2D();
@@ -192,6 +194,7 @@ namespace Game_Of_Life
                 nrLoadedGens = -1;
             }
         }
+
 
         private void NextButton_Click(object sender, EventArgs e)
         {
