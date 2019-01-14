@@ -197,8 +197,8 @@ namespace Game_Of_Life
                         }
                         else
                         {
-                            if (i == x && j == y)
-                                ;
+                            if (i == x && j == y) { }
+
                             else if (currentBoard[i][j] == true)
                                 nrLivingNeighbours++;
                         }
