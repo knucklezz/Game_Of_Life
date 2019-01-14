@@ -66,7 +66,7 @@ namespace Game_Of_Life
         private void StartButton_Click(object sender, EventArgs e)
         {
             
-            if (gameRunning == true )
+            if (gameRunning == true && autoGameRunning != true)
             {
                 if (timer.Enabled)
                 {
@@ -77,13 +77,19 @@ namespace Game_Of_Life
                     InitializeTimer();
 
                 }
+                autoGameRunning = true;
+                StartButton.Enabled = false;
+                NextButton.Enabled = false;
+                NewGameButton.Enabled = false;
+                LoadSaveButton.Enabled = false;
+
             }
             else
             {
                 MessageBox.Show("create a game");
             }
 
-            autoGameRunning = true;
+            
         }
 
         private void NewGameButton_Click(object sender, EventArgs e)
@@ -102,7 +108,7 @@ namespace Game_Of_Life
         }
         private void InitializeTimer()
         {
-            timer.Interval = 1500;
+            timer.Interval = 700;
             timer.Enabled = true;
         }
 
@@ -122,7 +128,11 @@ namespace Game_Of_Life
         private void StopButton_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
-            gameRunning = false;
+            autoGameRunning = false;
+            StartButton.Enabled = true;
+            NextButton.Enabled = true;
+            NewGameButton.Enabled = true;
+            LoadSaveButton.Enabled = true;
 
         }
 
@@ -130,10 +140,10 @@ namespace Game_Of_Life
         {
             ConvertArrayTo2D();
             GridView.Rows.Clear();
-            GridView.Refresh();
             int width = currentBoard2D.GetLength(0);
             int height = currentBoard2D.GetLength(1);
 
+            GridView.BackgroundColor = Color.FromArgb(255, 210, 82, 127);
 
             this.GridView.ColumnCount = width;
 
@@ -209,8 +219,11 @@ namespace Game_Of_Life
                 {
                     MessageBox.Show("You must create a random game or load one in first!");
                 }
-                else;
+                else
+                {
                     //Do Nothing
+                };
+                    
             }
         }
 
@@ -223,7 +236,6 @@ namespace Game_Of_Life
                 for (int j = 0; j < innerArray.Length; j++)
                 {
                     currentBoard2D[i, j] = currentBoard[i][j];
-
                 }
             }
         }
