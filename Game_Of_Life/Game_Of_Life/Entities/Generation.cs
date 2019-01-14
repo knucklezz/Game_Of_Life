@@ -9,6 +9,7 @@ namespace Game_Of_Life.Entities
         public GameName Game { get; set; }
         public string BoardData { get; set; }
 
+        [NotMapped]
         public bool[][] Board
         {
             get
@@ -66,6 +67,7 @@ namespace Game_Of_Life.Entities
                 }
             }
         }
+
     }
 }
 

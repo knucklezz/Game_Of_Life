@@ -27,7 +27,7 @@ namespace Game_Of_Life
         {
             InitializeComponent();
             gameLogicInstance = new GameLogic(boardSize);
-            System.Diagnostics.Debug.Write("");
+            CreateGameBoard();
         }
 
 
@@ -49,8 +49,10 @@ namespace Game_Of_Life
         {
             gameLogicInstance.SetLoadedGame(gameToLoad);
             nrLoadedGens = gameToLoad.generations.Count;
+            nrPlayedGens = 0;
 
             gameRunning = true;
+            GridView.Visible = true;
             currentBoard = gameLogicInstance.UpdateCurrentBoard();
             ConvertArrayTo2D();
             updateGameBoard();
@@ -87,25 +89,27 @@ namespace Game_Of_Life
             autoGameRunning = true;
         }
 
+
         private void NewGameButton_Click(object sender, EventArgs e)
         {
+            nrPlayedGens = 0;
             currentBoard = gameLogicInstance.GetNewGame();
             ConvertArrayTo2D();
 
             //Rita ut första spelplanen
-
+            GridView.Visible = true;
             updateGameBoard();
-
-            //_________________________
-
 
             gameRunning = true;
         }
+
+
         private void InitializeTimer()
         {
-            timer.Interval = 1500;
+            timer.Interval = 700;
             timer.Enabled = true;
         }
+
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -120,78 +124,75 @@ namespace Game_Of_Life
             }
         }
 
+
         private void StopButton_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
-            gameRunning = false;
+            autoGameRunning = false;
 
+        }
+
+
+        private void CreateGameBoard()
+        {
+            this.GridView.Visible = false;
+            this.GridView.ColumnCount = boardSize;
+
+            for (int r = 0; r < boardSize; r++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewColumn column = this.GridView.Columns[r];
+
+                column.Width = GridView.Width / boardSize;
+                row.Height = column.Width;
+                row.CreateCells(this.GridView);
+                GridView.Rows.Add(row);
+            }
         }
 
 
         private void updateGameBoard()
         {
             ConvertArrayTo2D();
-            GridView.Rows.Clear();
-            GridView.Refresh();
             int width = currentBoard2D.GetLength(0);
             int height = currentBoard2D.GetLength(1);
 
-
-            this.GridView.ColumnCount = width;
-
             for (int r = 0; r < height; r++)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewRow row = this.GridView.Rows[r];
                 DataGridViewColumn column = GridView.Columns[r];
-                column.Width = GridView.Width / boardSize;
-                row.Height = column.Width;
-
-                row.CreateCells(this.GridView);
 
                 for (int c = 0; c < width; c++)
                 {
-                   // row.Cells[c].Value = currentBoard2D[r, c];
-
                     if(currentBoard2D[r,c] == true)
                     {
                         row.Cells[c].Style.BackColor = Color.FromArgb(255, 57, 255, 20);
                         row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 255, 20);
                     }
                     else if(currentBoard2D[r,c] == false)
-                    {
-
-
+                    {                        
                         row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
                         row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 210, 82, 127);
                     }
                 }
-
-                this.GridView.Rows.Add(row);
-                //rita ut nästa spelplan
-
-
-                //----------------------
-                //currentBoard = gameLogicInstance.GetNextGeneration();
             }
-
             nrPlayedGens++;
+
             // After showing the last saved generation
-            // Check if there is something else that should happen here, is there a timer, something else...
-            // Or if there should even be a message box popping up here? Maybe not?
-            // Also if nrPlayedGens is counting correctly; is it one step late?
             if (nrPlayedGens == nrLoadedGens)
             {
                 string message = "This is the last saved generation of the game. \nContinue playing?";
                 string title = "End of save";
                 var dialogResult = MessageBox.Show(message, title, MessageBoxButtons.YesNo);
-                if(dialogResult == DialogResult.Yes)
+
+                if (dialogResult == DialogResult.Yes)
                 {
                     // Continue running game
                 }
                 else
                 {
-
                     gameRunning = false;
+                    nrPlayedGens = 0;
                 }
                 // Reset counter
                 nrLoadedGens = -1;
@@ -208,14 +209,13 @@ namespace Game_Of_Life
             }
             else
             {
-                if (autoGameRunning == false)
-                {
+                if (gameRunning == false)
                     MessageBox.Show("You must create a random game or load one in first!");
-                }
-                else;
-                    //Do Nothing
+                else
+                    ;
             }
         }
+
 
         private void ConvertArrayTo2D()
         {
@@ -226,11 +226,9 @@ namespace Game_Of_Life
                 for (int j = 0; j < innerArray.Length; j++)
                 {
                     currentBoard2D[i, j] = currentBoard[i][j];
-
                 }
             }
         }
 
-        
     }
 }
