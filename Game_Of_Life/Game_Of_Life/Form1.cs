@@ -41,7 +41,6 @@ namespace Game_Of_Life
             return gameLogicInstance.currentGame;
         }
 
-
         /// <summary>
         /// Sets the current game and game board in the gameLogicInstance to the parameter gameToLoad
         /// </summary>
@@ -59,13 +58,11 @@ namespace Game_Of_Life
             updateGameBoard();
         }
 
-
         private void LoadSaveButton_Click(object sender, EventArgs e)
         {
             Form2 LoadSaveForm = new Form2(this);
             LoadSaveForm.Show();
         }
-
 
         private void StartButton_Click(object sender, EventArgs e)
         {          
@@ -128,6 +125,45 @@ namespace Game_Of_Life
         {
             timer.Enabled = false;
             autoGameRunning = false;
+        }
+
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+            if (gameRunning == true && autoGameRunning != true)
+            {
+                currentBoard = gameLogicInstance.UpdateCurrentBoard();
+                updateGameBoard();
+            }
+            else
+            {
+                if (autoGameRunning == false)
+                {
+                    MessageBox.Show("You must create a random game or load one in first!");
+                }
+                else
+                {
+                    //Do Nothing
+                };
+                    
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ConvertArrayTo2D()
+        {
+            for (int i = 0; i < currentBoard.Length; i++)
+            {
+                bool[] innerArray = currentBoard[i];
+
+                for (int j = 0; j < innerArray.Length; j++)
+                {
+                    currentBoard2D[i, j] = currentBoard[i][j];
+                }
+            }
         }
 
 
@@ -197,36 +233,19 @@ namespace Game_Of_Life
             }
         }
 
-
-        private void NextButton_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            if (gameRunning == true && autoGameRunning != true)
-            {
-                currentBoard = gameLogicInstance.UpdateCurrentBoard();
-                updateGameBoard();
-            }
-            else
-            {
-                if (gameRunning == false)
-                    MessageBox.Show("You must create a random game or load one in first!");
-                else
-                    ;
-            }
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+            this.GridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridPanel.Height = BackPanel.Height;
+            this.GridPanel.Width = BackPanel.Width;
+            this.GridView.Height = BackPanel.Height;
+            this.GridView.Width = BackPanel.Height;
+            
+
         }
 
-
-        private void ConvertArrayTo2D()
-        {
-            for (int i = 0; i < currentBoard.Length; i++)
-            {
-                bool[] innerArray = currentBoard[i];
-
-                for (int j = 0; j < innerArray.Length; j++)
-                {
-                    currentBoard2D[i, j] = currentBoard[i][j];
-                }
-            }
-        }
-
+        
     }
 }
