@@ -45,6 +45,7 @@ namespace Game_Of_Life
                     game.Name = GameNameBox.Text;
                     Repos.SaveGame(game);
                     listBoxSavedGames.Items.Add(game.Id + ": " + game.Name);
+                    GameNameBox.Text = "";
                 }
             }
         }

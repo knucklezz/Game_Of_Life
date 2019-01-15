@@ -55,7 +55,6 @@ namespace Game_Of_Life
             };
 
             currentGame.generations.Add(gen);
-
             
             return currentBoard;
         }
