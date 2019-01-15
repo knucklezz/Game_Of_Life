@@ -23,6 +23,7 @@ namespace Game_Of_Life
         private bool[][] currentBoard;
         private bool[,] currentBoard2D = new bool[boardSize, boardSize];
 
+
         public Form1()
         {
             InitializeComponent();
@@ -67,8 +68,7 @@ namespace Game_Of_Life
 
 
         private void StartButton_Click(object sender, EventArgs e)
-        {
-            
+        {          
             if (gameRunning == true )
             {
                 if (timer.Enabled)
@@ -78,7 +78,6 @@ namespace Game_Of_Life
                 else
                 {
                     InitializeTimer();
-
                 }
             }
             else
@@ -129,7 +128,6 @@ namespace Game_Of_Life
         {
             timer.Enabled = false;
             autoGameRunning = false;
-
         }
 
 
