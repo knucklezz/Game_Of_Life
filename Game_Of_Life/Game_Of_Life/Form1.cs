@@ -27,7 +27,6 @@ namespace Game_Of_Life
         {
             InitializeComponent();
             gameLogicInstance = new GameLogic(boardSize);
-            CreateGameBoard();
         }
 
 
@@ -68,24 +67,21 @@ namespace Game_Of_Life
             
             if (gameRunning == true )
             {
-                if (timer.Enabled)
-                {
-                    MessageBox.Show("Timer is enabled");
-                }
-                else
-                {
-                    InitializeTimer();
+                InitializeTimer();
+                autoGameRunning = true;
+                NextButton.Enabled = false;
+                LoadSaveButton.Enabled = false;
+                NewGameButton.Enabled = false;
+                StartButton.Enabled = false;
 
-                }
+
             }
             else
             {
                 MessageBox.Show("create a game");
             }
 
-            autoGameRunning = true;
         }
-
 
         private void NewGameButton_Click(object sender, EventArgs e)
         {
@@ -100,13 +96,11 @@ namespace Game_Of_Life
             gameRunning = true;
         }
 
-
         private void InitializeTimer()
         {
             timer.Interval = 700;
             timer.Enabled = true;
         }
-
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -121,11 +115,15 @@ namespace Game_Of_Life
             }
         }
 
-
         private void StopButton_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
             autoGameRunning = false;
+            StartButton.Enabled = true;
+            NextButton.Enabled = true;
+            LoadSaveButton.Enabled = true;
+            NewGameButton.Enabled = true;
+            StartButton.Enabled = true;
 
         }
 
@@ -168,7 +166,6 @@ namespace Game_Of_Life
             }
         }
 
-
         private void CreateGameBoard()
         {
             this.GridView.Visible = false;
@@ -179,11 +176,15 @@ namespace Game_Of_Life
                 DataGridViewRow row = new DataGridViewRow();
                 DataGridViewColumn column = this.GridView.Columns[r];
 
-                column.Width = GridView.Width / boardSize;
-                row.Height = column.Width;
+
+                column.MinimumWidth = GridView.Height / boardSize;
+                row.MinimumHeight = GridView.Width / boardSize;
+                GridView.RowTemplate.MinimumHeight = GridView.Height / boardSize;
+
                 row.CreateCells(this.GridView);
                 GridView.Rows.Add(row);
             }
+            this.GridView.Left = (GridPanel.Width / 2) - (GridView.Width / 2);
         }
 
 
@@ -202,13 +203,13 @@ namespace Game_Of_Life
                 {
                     if(currentBoard2D[r,c] == true)
                     {
-                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 57, 255, 20);
-                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 255, 20);
+                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 6, 60, 174);
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 6, 60, 174);
                     }
                     else if(currentBoard2D[r,c] == false)
                     {                        
-                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 210, 82, 127);
-                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 210, 82, 127);
+                        row.Cells[c].Style.BackColor = Color.FromArgb(255, 255, 255, 255);
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 255, 255, 255);
                     }
                 }
             }
@@ -239,15 +240,10 @@ namespace Game_Of_Life
         {
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-            this.GridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridPanel.Height = BackPanel.Height;
-            this.GridPanel.Width = BackPanel.Width;
-            this.GridView.Height = BackPanel.Height;
-            this.GridView.Width = BackPanel.Height;
-            
+            GridView.Height = GridPanel.Height;
+            GridView.Width = GridView.Height;
 
+            CreateGameBoard();
         }
-
-        
     }
 }

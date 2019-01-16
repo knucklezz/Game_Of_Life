@@ -32,6 +32,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.GridPanel = new System.Windows.Forms.Panel();
+            this.GridView = new System.Windows.Forms.DataGridView();
             this.StartButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
@@ -39,10 +40,9 @@
             this.NewGameButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.BackPanel = new System.Windows.Forms.Panel();
-            this.GridView = new System.Windows.Forms.DataGridView();
             this.GridPanel.SuspendLayout();
-            this.BackPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
+            this.BackPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer
@@ -60,6 +60,9 @@
             // 
             // GridPanel
             // 
+            this.GridPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GridPanel.AutoSize = true;
             this.GridPanel.BackColor = System.Drawing.Color.DimGray;
             this.GridPanel.Controls.Add(this.GridView);
@@ -68,6 +71,35 @@
             this.GridPanel.Name = "GridPanel";
             this.GridPanel.Size = new System.Drawing.Size(751, 602);
             this.GridPanel.TabIndex = 4;
+            // 
+            // GridView
+            // 
+            this.GridView.AllowUserToAddRows = false;
+            this.GridView.AllowUserToDeleteRows = false;
+            this.GridView.AllowUserToResizeColumns = false;
+            this.GridView.AllowUserToResizeRows = false;
+            this.GridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridView.BackgroundColor = System.Drawing.Color.White;
+            this.GridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridView.ColumnHeadersVisible = false;
+            this.GridView.Enabled = false;
+            this.GridView.Location = new System.Drawing.Point(73, 0);
+            this.GridView.Margin = new System.Windows.Forms.Padding(2);
+            this.GridView.MultiSelect = false;
+            this.GridView.Name = "GridView";
+            this.GridView.RowHeadersVisible = false;
+            this.GridView.RowTemplate.Height = 24;
+            this.GridView.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.GridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.GridView.ShowCellErrors = false;
+            this.GridView.ShowCellToolTips = false;
+            this.GridView.ShowEditingIcon = false;
+            this.GridView.ShowRowErrors = false;
+            this.GridView.Size = new System.Drawing.Size(600, 600);
+            this.GridView.TabIndex = 0;
             // 
             // StartButton
             // 
@@ -180,32 +212,6 @@
             this.BackPanel.Size = new System.Drawing.Size(886, 602);
             this.BackPanel.TabIndex = 0;
             // 
-            // GridView
-            // 
-            this.GridView.AllowUserToAddRows = false;
-            this.GridView.AllowUserToDeleteRows = false;
-            this.GridView.AllowUserToResizeColumns = false;
-            this.GridView.AllowUserToResizeRows = false;
-            this.GridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridView.BackgroundColor = System.Drawing.Color.White;
-            this.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridView.ColumnHeadersVisible = false;
-            this.GridView.Enabled = false;
-            this.GridView.Location = new System.Drawing.Point(73, 0);
-            this.GridView.Margin = new System.Windows.Forms.Padding(2);
-            this.GridView.MultiSelect = false;
-            this.GridView.Name = "GridView";
-            this.GridView.RowHeadersVisible = false;
-            this.GridView.RowTemplate.Height = 24;
-            this.GridView.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.GridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.GridView.ShowCellErrors = false;
-            this.GridView.ShowCellToolTips = false;
-            this.GridView.ShowEditingIcon = false;
-            this.GridView.ShowRowErrors = false;
-            this.GridView.Size = new System.Drawing.Size(600, 600);
-            this.GridView.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -221,9 +227,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.GridPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.BackPanel.ResumeLayout(false);
             this.BackPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
